@@ -1,2 +1,2 @@
 # snakeGame--Plagga
-Snake 🐍
+🐍 this is my first game attempt 🐍

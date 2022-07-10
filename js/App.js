@@ -5,32 +5,44 @@ let canvas = document.querySelector('.canvas');
 // console.log(heigthCanvas, widthCanvas);
 // console.log(canvas.clientHeight, canvas.clientWidth);
 
-class Circle{
-    RenderCircle(RandonColor, nroC){
+class Canvas{
+    constructor(){
+        let pointsCircle = [];
+        this.widthCanvas = canvas.clientWidth;
+        this.heigthCanvas = canvas.clientHeight;
+        this.colorLimit = {
+            red : 2,
+            blue : 3,
+            yellow : 3,
+            green : 1
+        }
+    }
+    renderCircle(nroC){
         for (let i = 0; i < nroC; i++) {
-            let widthCanvas = Math.floor(Math.random() * (canvas.clientWidth - 40)),
-            heigthCanvas = Math.floor(Math.random() * (canvas.clientHeight - 40));
             let newDiv = document.createElement('div');
             newDiv.classList.add('block');
-            newDiv.style.top = `${heigthCanvas}px`; 
-            newDiv.style.left = `${widthCanvas}px`;
-            newDiv.style.backgroundColor = `#${RandonColor()}`;
+            newDiv.style.top = `${this.randomPositionHeigth()}px`; 
+            newDiv.style.left = `${this.randonPositionWidth()}px`;
+            newDiv.style.backgroundColor = `#${this.randonColor()}`;
             canvas.appendChild(newDiv);
         }
     }
-    RandonColor(){
-        let colors = {
-            0: "C70039",
-            1: "4B40FF",
-            2: "DFEF1E",
-            3: "3AFF1E"
-        }
+    randonColor(){
+        let colors = [
+            "C70039", //Rojo
+            "4B40FF", //Amarill0
+            "DFEF1E", //Azul
+            "3AFF1E" //Verde
+        ]
         return colors[`${Math.floor(Math.random() * 4)}`];
     }
-    olpElements(){
-        
+    randonPositionWidth(){
+        return Math.floor(Math.random() * (this.widthCanvas - 40));
+    }
+    randomPositionHeigth(){
+        return Math.floor(Math.random() * (this.heigthCanvas - 40));
     }
 }
 
-let circle = new Circle();
-circle.RenderCircle(circle.RandonColor, 8);
+let classCanvas = new Canvas();
+classCanvas.renderCircle(10)
