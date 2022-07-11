@@ -7,7 +7,7 @@ let canvas = document.querySelector('.canvas');
 
 class Canvas{
     constructor(){
-        let pointsCircle = [];
+        this.pointsCircle = [];
         this.widthCanvas = canvas.clientWidth;
         this.heigthCanvas = canvas.clientHeight;
         this.colorLimit = {
@@ -16,17 +16,24 @@ class Canvas{
             yellow : 3,
             green : 1
         }
+        this.difficult = 4;
     }
-    renderCircle(nroC){
-        for (let i = 0; i < nroC; i++) {
-            let d = Math.floor(Math.random() * (this.widthCanvas - 40)),
-            d = Math.floor(Math.random() * (this.heigthCanvas - 40));
+    renderCircle(){
+        this.randomCoord(this.difficult)
+        this.pointsCircle.forEach(elem => {
             let newDiv = document.createElement('div');
-            newDiv.classList.add('block');
-            newDiv.style.top = `${this.randomPositionHeigth()}px`; 
-            newDiv.style.left = `${this.randonPositionWidth()}px`;
-            newDiv.style.backgroundColor = `#${this.randonColor()}`;
+            newDiv.classList.add('block')
+            newDiv.style.top = `${elem.y}px` ?? `${350}px`;
+            newDiv.style.left = `${elem.x}px` ?? `${300}px`;
+            newDiv.style.backgroundColor = `#${elem.bg}`
             canvas.appendChild(newDiv);
+        })
+    }
+    randomCoord(nroC){
+        for (let i = 0; i < nroC; i++) {
+            let widthRandom = Math.floor(Math.random() * (this.widthCanvas - 40)),
+            heigthRandom = Math.floor(Math.random() * (this.heigthCanvas - 40));
+            this.pointsCircle.push({x: widthRandom, y: heigthRandom, bg: this.randonColor()})
         }
     }
     randonColor(){
@@ -41,4 +48,5 @@ class Canvas{
 }
 
 let classCanvas = new Canvas();
-classCanvas.renderCircle(10)
+classCanvas.renderCircle()
+console.log(classCanvas.pointsCircle);
