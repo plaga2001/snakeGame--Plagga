@@ -1,13 +1,8 @@
 let canvas = document.querySelector('.canvas');
-// Math.floor(Math.random() * (canvas.clientHeight - 40))
-
-
-// console.log(heigthCanvas, widthCanvas);
-// console.log(canvas.clientHeight, canvas.clientWidth);
 
 class Canvas{
     constructor(){
-        this.pointsCircle = [];
+        this.circles = [];
         this.widthCanvas = canvas.clientWidth;
         this.heigthCanvas = canvas.clientHeight;
         this.colorLimit = {
@@ -16,11 +11,11 @@ class Canvas{
             yellow : 3,
             green : 1
         }
-        this.difficult = 4;
+        this.difficult = 10;
     }
     renderCircle(){
         this.randomCoord(this.difficult)
-        this.pointsCircle.forEach(elem => {
+        this.circles.forEach(elem => {
             let newDiv = document.createElement('div');
             newDiv.classList.add('block')
             newDiv.style.top = `${elem.y}px` ?? `${350}px`;
@@ -33,20 +28,19 @@ class Canvas{
         for (let i = 0; i < nroC; i++) {
             let widthRandom = Math.floor(Math.random() * (this.widthCanvas - 40)),
             heigthRandom = Math.floor(Math.random() * (this.heigthCanvas - 40));
-            this.pointsCircle.push({x: widthRandom, y: heigthRandom, bg: this.randonColor()})
+            this.circles.push({x: widthRandom, y: heigthRandom, bg: this.colormapping()})
         }
     }
-    randonColor(){
+    colormapping(){
         let colors = [
-            "C70039", //Rojo
-            "4B40FF", //Amarill0
-            "DFEF1E", //Azul
-            "3AFF1E" //Verde
+            "D61C4E", //Red
+            "FAD923", //Yellow
+            "4E944F" //Grenn
         ]
-        return colors[`${Math.floor(Math.random() * 4)}`];
+        return colors[`${Math.floor(Math.random() * colors.length)}`];
     }
 }
 
 let classCanvas = new Canvas();
 classCanvas.renderCircle()
-console.log(classCanvas.pointsCircle);
+console.log(classCanvas.circles);

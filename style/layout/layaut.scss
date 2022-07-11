@@ -1,6 +1,6 @@
 .canvas{
     margin: auto;
-    background-color: black;
+    background: linear-gradient(to right, #283c86, #45a247);
     width: 80vw;
     min-height: 70vh;
     padding: 1em;
@@ -10,9 +10,9 @@
 }
 
 .block{
-    width: 2em;
-    height: 2em;
-    // border-radius: 2em;
+    width: 1em;
+    height: 1em;
+    border-radius: 1em;
     background-color: aqua;
     position: absolute;
 }
