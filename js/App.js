@@ -19,6 +19,8 @@ class Canvas{
     }
     renderCircle(nroC){
         for (let i = 0; i < nroC; i++) {
+            let d = Math.floor(Math.random() * (this.widthCanvas - 40)),
+            d = Math.floor(Math.random() * (this.heigthCanvas - 40));
             let newDiv = document.createElement('div');
             newDiv.classList.add('block');
             newDiv.style.top = `${this.randomPositionHeigth()}px`; 
@@ -35,12 +37,6 @@ class Canvas{
             "3AFF1E" //Verde
         ]
         return colors[`${Math.floor(Math.random() * 4)}`];
-    }
-    randonPositionWidth(){
-        return Math.floor(Math.random() * (this.widthCanvas - 40));
-    }
-    randomPositionHeigth(){
-        return Math.floor(Math.random() * (this.heigthCanvas - 40));
     }
 }
 
