@@ -21,6 +21,7 @@ class Canvas{
         for (let i = 0; i < nroC; i++) {
             let d = Math.floor(Math.random() * (this.widthCanvas - 40)),
             d = Math.floor(Math.random() * (this.heigthCanvas - 40));
+            
             let newDiv = document.createElement('div');
             newDiv.classList.add('block');
             newDiv.style.top = `${this.randomPositionHeigth()}px`; 
