@@ -2,19 +2,19 @@ const canvas = document.querySelector('.canvas');
 
 class Canvas{
     constructor(){
-        this.circles = [];
         this.widthCanvas = canvas.clientWidth;
         this.heigthCanvas = canvas.clientHeight;
-        this.colors = [
-            {red: "D61C4E", limit: 3},
-            {yellow: "FAD923", limit: 2},
-            {green: "4E944F", limit: 2}
+        this.circlesData = [];
+        this.colorCircleAttributes = [
+            {color: "D61C4E", limit: 4}, //red
+            {color: "FAD923", limit: 2}, //yellow
+            {color: "4E944F", limit: 2} //green
         ]
-        this.difficult = 8; //min = 8
-    }
+        this.difficult = this.colorCircleAttributes.reduce((total, item) => total + item.limit, 0); //*Min = 8//
+    }   
     renderCircle(){
         this.createRandomCircle(this.difficult)
-        this.circles.forEach(elem => {
+        this.circlesData.forEach(elem => {
             let newDiv = document.createElement('div');
             newDiv.classList.add('block')
             newDiv.style.top = `${elem.y}px` ?? `${350}px`;
@@ -27,14 +27,22 @@ class Canvas{
         for (let i = 0; i < nroC; i++) {
             let widthRandom = Math.floor(Math.random() * (this.widthCanvas - 40)),
             heigthRandom = Math.floor(Math.random() * (this.heigthCanvas - 40));
-            this.circles.push({x: widthRandom, y: heigthRandom, bg: this.colorMapping() ?? "000000"})
+            this.circlesData.push({x: widthRandom, y: heigthRandom, bg: this.colorMapping(i) ?? "000000"})
         }
     }
-    colorMapping(){
-        
+    colorMapping(i){
+        let colorBack;
+        if (i < this.colorCircleAttributes[0].limit) {
+            colorBack = "D61C4E";
+        }else if(i < (this.colorCircleAttributes[0].limit + this.colorCircleAttributes[1].limit)){
+            colorBack = "FAD923";
+        }else{
+            colorBack = "4E944F";
+        }
+        return colorBack;
     }
 }
 
 const classCanvas = new Canvas();
 classCanvas.renderCircle()
-console.log(classCanvas.circles);
+console.log(classCanvas.circlesData);
