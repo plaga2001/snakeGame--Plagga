@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style/App.css">
+    <title>🐍Snake Game🐍 </title>
+    <link rel="stylesheet" href="./style/base/app.css">
+    <link rel="stylesheet" href="./style/index.css">
 </head>
 <body>
-    <main class="canvas">
-        
+    <main class="l-main">
+        <section class="l-base">
+            <section class="canvas"></section>
+        </section>
+        <div class="l-message"> 
+            <div class="messageC">
+                <h2 id="messageCanvas">Perdiste!!</h2>
+                <p id="pCanvas">¿Quieres reintentar?</p>
+                <button type="button" class="buttonC">REINTENTAR</button>
+            </div>
+        </div>
     </main>
     <script src="./js/App.js"></script>
 </body>

@@ -41,6 +41,9 @@ class Canvas{
         }
         return colorBack;
     }
+    showMessage(type, text){
+        
+    }
 }
 
 const classCanvas = new Canvas();
